@@ -1,6 +1,6 @@
 package com.bk;
 
-//https://leetcode.com/problems/search-insert-position/submissions/
+//https://leetcode.com/problems/search-insert-position/
 public class SearchInsertPosition {
 
 	public int searchInsert(int[] nums, int target) {
