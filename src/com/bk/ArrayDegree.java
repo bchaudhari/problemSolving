@@ -33,6 +33,47 @@ nums[i] will be an integer between 0 and 49,999.
  *
  */
 public class ArrayDegree {
+	public int findShortestSubArrayImproved(int[] nums) {
+        int shortestLength = nums.length;
+        
+        // Hashmap to hold unique numbers as key and repetition count as value 
+        HashMap<Integer, Integer> numRepetitionCount = new HashMap<Integer, Integer>();
+        
+        // Holds right index of each number
+        HashMap<Integer, Integer> right = new HashMap<Integer, Integer>();
+        
+        // Holds left index of each number
+        HashMap<Integer, Integer> left = new HashMap<Integer, Integer>();
+        
+        for(int i = 0; i < nums.length; i++) {
+        	if(!numRepetitionCount.containsKey(nums[i])) {
+        		numRepetitionCount.put(nums[i], 1);
+        		left.put(nums[i], i);
+        	} else {
+        		numRepetitionCount.put(nums[i], numRepetitionCount.get(nums[i]) + 1);
+        		right.put(nums[i], i);
+        	}
+        }
+        
+        // Find degree of Array
+        Collection<Integer> col = numRepetitionCount.values();
+        int degree = Collections.max(col);
+        
+        // Holds unique numbers which are repeating times of degree
+        ArrayList<Integer> numsWithDegree = new ArrayList<Integer>();
+        
+        for(int x: numRepetitionCount.keySet()) {
+        	if(numRepetitionCount.get(x) == degree) {
+        		numsWithDegree.add(x);
+        	}
+        }
+                
+        for(int x: numsWithDegree) {
+        	int length = right.get(x) - left.get(x) + 1;
+        	shortestLength = Math.min(length, shortestLength);
+        }
+        return shortestLength;
+    }
 	public int findShortestSubArray(int[] nums) {
         int shortestLength = nums.length;
         
@@ -80,7 +121,7 @@ public class ArrayDegree {
 	public static void main(String[] args) {
 		int[] nums = {1, 2, 2, 3, 1};
 		ArrayDegree ad = new ArrayDegree();
-		System.out.println(ad.findShortestSubArray(nums));  
+		System.out.println(ad.findShortestSubArrayImproved(nums));  
 	}
 
 }
