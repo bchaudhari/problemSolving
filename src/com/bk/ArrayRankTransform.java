@@ -2,6 +2,7 @@ package com.bk;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,21 +40,40 @@ Output: [5,3,4,2,8,6,7,1,3]
  */
 
 public class ArrayRankTransform {
-	public int[] arrayRankTransform(int[] arr) {
-	   // Convert Array to ArrayList
-       List<Integer> al = Arrays.stream(arr).boxed().collect(Collectors.toList());
-       
-       // Convert ArrayList to TreeSet so that duplicates are removed and elements are sorted
-       Set<Integer> treeSet = new TreeSet<Integer>(al);
-       
-       // Convert Treeset to ArrayList so that we can fetch index based on element
-       al = new ArrayList<Integer>(treeSet);
-       
-       for(int i = 0; i < arr.length; i++) {
-    	   arr[i] = al.indexOf(arr[i]) + 1;
-       }
-       return arr;
+	public int[] arrayRankTransformImproved(int[] arr) {
+	   int[] temp = Arrays.copyOf(arr, arr.length);
+	   Arrays.sort(temp);
+	   int counter = 1;
+	   HashMap<Integer, Integer> numberRank = new HashMap<Integer, Integer>();
+	   for(int x: temp) {
+		 if(!numberRank.containsKey(x)) {
+			 numberRank.put(x, counter);
+			 counter++;
+		 }
+	   }
+	   
+	   int[] result = new int[arr.length];
+	   for(int i = 0; i < arr.length; i++) {
+		   result[i] = numberRank.get(arr[i]);
+	   }
+	   
+	   return result;
     }
+	public int[] arrayRankTransform1(int[] arr) {
+		   // Convert Array to ArrayList
+	       List<Integer> al = Arrays.stream(arr).boxed().collect(Collectors.toList());
+	       
+	       // Convert ArrayList to TreeSet so that duplicates are removed and elements are sorted
+	       Set<Integer> treeSet = new TreeSet<Integer>(al);
+	       
+	       // Convert Treeset to ArrayList so that we can fetch index based on element
+	       al = new ArrayList<Integer>(treeSet);
+	       
+	       for(int i = 0; i < arr.length; i++) {
+	    	   arr[i] = al.indexOf(arr[i]) + 1;
+	       }
+	       return arr;
+	    }
 	
 	public void printArray(int[] arr) {
 		System.out.print("\n[");
@@ -68,9 +88,9 @@ public class ArrayRankTransform {
 		int[] A3 = {37,12,28,9,100,56,80,5,12};
 		
 		ArrayRankTransform arrayRank = new ArrayRankTransform();
-		arrayRank.printArray(arrayRank.arrayRankTransform(A1));
-		arrayRank.printArray(arrayRank.arrayRankTransform(A2));
-		arrayRank.printArray(arrayRank.arrayRankTransform(A3));
+		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A1));
+		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A2));
+		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A3));
 
 	}
 
