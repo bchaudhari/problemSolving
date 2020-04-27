@@ -20,7 +20,27 @@ Output: false
  *
  */
 public class ValidPalindrome {
+	// Fastest
 	public boolean isPalindrome(String s) {
+		int i = 0;
+		int j = s.length() -1;
+		while(j > i) {
+			while(j > i && !isAlphanumeric(s.charAt(i)))
+				i++;
+			while(j > i && !isAlphanumeric(s.charAt(j)))
+				j--;
+			
+			if(Character.toLowerCase(s.charAt(i++)) != Character.toLowerCase(s.charAt(j--))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public boolean isAlphanumeric(char c) {
+		return (Character.isAlphabetic(c) || Character.isDigit(c));
+	}
+	
+	public boolean isPalindrome3(String s) {
 		s = s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
 		if(s.isEmpty())
 			return true;
@@ -58,12 +78,14 @@ public class ValidPalindrome {
 		String s2 = "race a car";
 		String s3 = "";
 		String s4 = "0P";
-		
+		String s5 = " ";
+
 		ValidPalindrome palindrome = new ValidPalindrome();
 		System.out.println("Expected true found --> " + palindrome.isPalindrome(s1));
 		System.out.println("Expected false found --> " + palindrome.isPalindrome(s2));
 		System.out.println("Expected true found --> " + palindrome.isPalindrome(s3));
 		System.out.println("Expected false found --> " + palindrome.isPalindrome(s4));
+		System.out.println("Expected true found --> " + palindrome.isPalindrome(s5));
 	}
 
 }
