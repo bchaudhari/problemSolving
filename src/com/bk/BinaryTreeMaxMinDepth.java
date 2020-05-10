@@ -2,6 +2,7 @@ package com.bk;
 
 /**
  * Leetcode - https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ * Leetcode - https://leetcode.com/problems/minimum-depth-of-binary-tree/
  * 
  Given a binary tree, find its maximum depth.
 
@@ -23,16 +24,32 @@ return its depth = 3.
  * @author bhaveshkumar.chaudhari@gmail.com
  *
  */
-public class BinaryTreeMaxDepth {
+public class BinaryTreeMaxMinDepth {
 	public int maxDepth(TreeNode root) {
 		if(root == null) {
 			return 0;
 		}
 		else {
-			return Math.max(maxDepth(root.left), maxDepth(root.right))+1;
+			return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 		}
 	}
-	
+
+	public int minDepth(TreeNode root) {
+		if(root == null) {
+			return 0;
+		} 
+		
+		int leftDepth = minDepth(root.left);
+		int rightDepth = minDepth(root.right);
+		
+		if(leftDepth == 0) 
+			return rightDepth + 1;
+		else if(rightDepth == 0)
+			return leftDepth + 1;
+		else
+			return Math.min(leftDepth, rightDepth) + 1;
+	}
+
 	public static void main(String[] args) {
 		TreeNode root = new TreeNode(3);
 		TreeNode one = new TreeNode(9);
@@ -47,8 +64,9 @@ public class BinaryTreeMaxDepth {
 		two.right = four;
 		four.left = five;
 
-		BinaryTreeMaxDepth binaryTreeMaxDepth = new BinaryTreeMaxDepth();
+		BinaryTreeMaxMinDepth binaryTreeMaxDepth = new BinaryTreeMaxMinDepth();
 		System.out.println(binaryTreeMaxDepth.maxDepth(root));
+		System.out.println(binaryTreeMaxDepth.minDepth(root));
 	}
 
 }
