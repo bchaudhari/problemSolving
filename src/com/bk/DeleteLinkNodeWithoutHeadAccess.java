@@ -1,5 +1,7 @@
 package com.bk;
 
+import com.bk.utils.ListNode;
+
 /***
  * Leetcode - https://leetcode.com/problems/delete-node-in-a-linked-list/
  * 
@@ -39,20 +41,7 @@ public class DeleteLinkNodeWithoutHeadAccess {
 		
 		DeleteLinkNodeWithoutHeadAccess deleteLinkNodeWithoutHeadAccess = new DeleteLinkNodeWithoutHeadAccess();
 		deleteLinkNodeWithoutHeadAccess.deleteNode(two);
-		printLinkedList(one);
+		ListNode.printLinkedList(one);
 		
 	}
-	
-	public static void printLinkedList(ListNode node) {
-		while(node != null) {
-			System.out.print(node.val + " ");
-			node = node.next;
-		}
-	}
-}
-
-class ListNode {
-	int val;
-	ListNode next;
-	ListNode(int x) { val = x; }
 }
