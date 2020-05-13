@@ -3,6 +3,8 @@ package com.bk;
 import java.awt.print.Printable;
 import java.util.Arrays;
 
+import com.bk.utils.Printer;
+
 /**
  * Leetcode - https://leetcode.com/problems/merge-sorted-array/ 
  * 
@@ -80,28 +82,22 @@ public class MergeSortedArray {
 		int n8 = 1;
 
 		mergeSortedArray.merge(nums1, m1, nums2, n2);
-		printArray(nums1);
+		Printer.printArray(nums1);
 
 		System.out.println("\n");
 
 		mergeSortedArray.merge(nums3, m3, nums4, n4);
-		printArray(nums3);
+		Printer.printArray(nums3);
 
 		System.out.println("\n");
 
 		mergeSortedArray.merge(nums5, m5, nums6, n6);
-		printArray(nums5);
+		Printer.printArray(nums5);
 
 		System.out.println("\n");
 
 		mergeSortedArray.merge(nums7, m7, nums8, n8);
-		printArray(nums7);
+		Printer.printArray(nums7);
 
-	}
-
-	public static void printArray(int[] arr) {
-		for(int a: arr) {
-			System.out.print(a + " ");
-		}	
 	}
 }

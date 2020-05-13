@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.bk.utils.Printer;
+
 /***
  * Leetcode - https://leetcode.com/problems/intersection-of-two-arrays/
  * 
@@ -69,20 +71,10 @@ public class ArrayIntersection {
 		int[] A3a = {1, 2, 3};
 		int[] A3b = {};
 		
-		printArray(arrayIntersection.intersection(A1a, A1b));
-		printArray(arrayIntersection.intersection(A2a, A2b));
-		printArray(arrayIntersection.intersection(A3a, A3b));
+		Printer.printArray(arrayIntersection.intersection(A1a, A1b));
+		Printer.printArray(arrayIntersection.intersection(A2a, A2b));
+		Printer.printArray(arrayIntersection.intersection(A3a, A3b));
 		
 		
 	}
-	
-	public static void printArray(int[] nums) {
-		System.out.print("\n[");
-		for(int x: nums) {
-			System.out.print(x);
-			System.out.print(",");
-		}
-		System.out.print("]\n");
-	}
-
 }

@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import com.bk.utils.Printer;
+
 /***
  * Leetcode - https://leetcode.com/problems/rank-transform-of-an-array/
  *
@@ -74,23 +76,16 @@ public class ArrayRankTransform {
 	       }
 	       return arr;
 	    }
-	
-	public void printArray(int[] arr) {
-		System.out.print("\n[");
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.print("]\n");
-	}
+
 	public static void main(String[] args) {
 		int[] A1 = {40,10,20,30};
 		int[] A2 = {100, 100, 100};
 		int[] A3 = {37,12,28,9,100,56,80,5,12};
 		
 		ArrayRankTransform arrayRank = new ArrayRankTransform();
-		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A1));
-		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A2));
-		arrayRank.printArray(arrayRank.arrayRankTransformImproved(A3));
+		Printer.printArray(arrayRank.arrayRankTransformImproved(A1));
+		Printer.printArray(arrayRank.arrayRankTransformImproved(A2));
+		Printer.printArray(arrayRank.arrayRankTransformImproved(A3));
 
 	}
 

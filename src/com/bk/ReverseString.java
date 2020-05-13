@@ -3,6 +3,8 @@
  */
 package com.bk;
 
+import com.bk.utils.Printer;
+
 /**
  * Leetcode - https://leetcode.com/problems/reverse-string/
  * 
@@ -45,20 +47,11 @@ public class ReverseString {
 		char[] s1 = {'h','e','l','l','o'};
 		ReverseString revString = new ReverseString();
 		revString.reverseString(s1);
-		printArray(s1);
+		Printer.printArray(s1);
 		
 		char[] s2 = {'h','a','n','n','a','h'};
 		revString.reverseString(s2);
 		System.out.println("\n");
-		printArray(s2);
+		Printer.printArray(s2);
 	}
-	
-	public static void printArray(char[] s) {
-		for(char c: s) {
-			System.out.print(c + " ");
-		}
-	}
-	
-	
-
 }

@@ -2,6 +2,8 @@ package com.bk;
 
 import java.util.Hashtable;
 
+import com.bk.utils.Printer;
+
 /***
  * Leetcode - https://leetcode.com/problems/two-sum/
  * 
@@ -39,15 +41,6 @@ public class TwoSum {
 		int target1 = 9;
 		
 		TwoSum twoSum = new TwoSum();
-		printArray(twoSum.twoSum(nums1, target1));
-	}
-	
-	public static void printArray(int[] nums) {
-		System.out.print("\n[");
-		for(int x: nums) {
-			System.out.print(x);
-			System.out.print(",");
-		}
-		System.out.print("]\n");
+		Printer.printArray(twoSum.twoSum(nums1, target1));
 	}
 }
