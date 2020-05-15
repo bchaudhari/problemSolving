@@ -1,7 +1,6 @@
 package com.bk;
 
 import java.util.Hashtable;
-import java.util.Set;
 
 /**
  * Leetcode - https://leetcode.com/problems/html-entity-parser/
