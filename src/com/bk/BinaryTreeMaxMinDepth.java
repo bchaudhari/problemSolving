@@ -1,5 +1,7 @@
 package com.bk;
 
+import com.bk.utils.TreeNode;
+
 /**
  * Leetcode - https://leetcode.com/problems/maximum-depth-of-binary-tree/
  * Leetcode - https://leetcode.com/problems/minimum-depth-of-binary-tree/
