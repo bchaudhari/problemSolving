@@ -27,6 +27,9 @@ Output:
  *
  */
 public class PascalTriangle {
+	
+	// Runtime: 0 ms
+	// Faster than 100%
 	public List<List<Integer>> generate(int numRows) {
 		List<List<Integer>> result = new ArrayList<List<Integer>> ();
 		for(int i = 1; i <= numRows; i++) {
