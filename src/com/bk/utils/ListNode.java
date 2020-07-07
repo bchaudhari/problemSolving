@@ -15,6 +15,7 @@ public class ListNode {
 	}
 
 	public static void printLinkedList(ListNode node) {
+		System.out.print("\n");
 		while(node != null) {
 			System.out.print(node.val + " ");
 			node = node.next;
