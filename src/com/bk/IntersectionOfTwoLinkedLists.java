@@ -93,7 +93,7 @@ public class IntersectionOfTwoLinkedLists {
 
 		IntersectionOfTwoLinkedLists intersectionOfTwoLinkedLists = new IntersectionOfTwoLinkedLists();
 		ListNode result = intersectionOfTwoLinkedLists.getIntersectionNode(head1, head2);
-		System.out.println(result.val);
+		System.out.println(result.value);
 	}
 
 }

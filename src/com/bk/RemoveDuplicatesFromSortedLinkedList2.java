@@ -25,8 +25,8 @@ public class RemoveDuplicatesFromSortedLinkedList2 {
 	public ListNode deleteDuplicates(ListNode head) {
 		if (head == null) return null;
 
-		if (head.next != null && head.val == head.next.val) {
-			while (head.next != null && head.val == head.next.val) {
+		if (head.next != null && head.value == head.next.value) {
+			while (head.next != null && head.value == head.next.value) {
 				head = head.next;
 			}
 			return deleteDuplicates(head.next);
@@ -41,7 +41,7 @@ public class RemoveDuplicatesFromSortedLinkedList2 {
 		ListNode dummy = new ListNode(0), fast = head, slow = dummy;
 		slow.next = fast;
 		while(fast != null) {
-			while (fast.next != null && fast.val == fast.next.val) {
+			while (fast.next != null && fast.value == fast.next.value) {
 				fast = fast.next;    //while loop to find the last node of the dups.
 			}
 			if (slow.next != fast) { //duplicates detected.
@@ -68,7 +68,7 @@ public class RemoveDuplicatesFromSortedLinkedList2 {
 		Boolean deleteCur = false;
 		while(cur != null) {
 			// Remove all duplicates except first one(current)
-			if(next != null && cur.val == next.val) {
+			if(next != null && cur.value == next.value) {
 				next = next.next;
 				cur.next = next;
 				deleteCur = true;

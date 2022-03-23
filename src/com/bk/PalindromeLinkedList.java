@@ -42,7 +42,7 @@ public class PalindromeLinkedList {
 		ListNode tail = reverseLinkedList(slow.next);
 
 		while(tail != null) {
-			if(head.val != tail.val) {
+			if(head.value != tail.value) {
 				return false;
 			}
 			head = head.next;

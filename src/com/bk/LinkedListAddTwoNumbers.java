@@ -29,10 +29,10 @@ public class LinkedListAddTwoNumbers {
 			while(l1 != null || l2 != null) {
 				sum = cf;
 				if(l1 != null) {
-					sum = sum + l1.val;
+					sum = sum + l1.value;
 					l1 = l1.next;
 				} if(l2 != null) {
-					sum = sum + l2.val;
+					sum = sum + l2.value;
 					l2 = l2.next;
 				}
 				

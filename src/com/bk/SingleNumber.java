@@ -1,5 +1,6 @@
 package com.bk;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ Output: 4
  *
  */
 public class SingleNumber {
-	public int singleNumber(int[] nums) {
+	public int singleNumber2(int[] nums) {
         Set<Integer> resultSet = new HashSet<Integer>();
         for(int x: nums){
             if(resultSet.contains(x)){
@@ -46,4 +47,25 @@ public class SingleNumber {
 		System.out.println("Expected 1 found --> " + number.singleNumber(a1));
 		System.out.println("Expected 4 found --> " + number.singleNumber(a2));		
 	}
+	
+	public int singleNumber(int[] nums) {
+		int singleNum = 0;
+        int n = nums.length;
+        if(n < 2){
+            return nums[0];
+        }
+        
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length;){
+            if(i != n-1 && nums[i] == nums[i+1]){
+                i += 2;
+            }
+            else{
+                singleNum = nums[i];
+                return singleNum;
+            }
+        }
+        return singleNum;
+        
+    }
 }

@@ -31,7 +31,7 @@ public class RemoveDuplicatesFromSortedLinkedList {
 		ListNode cur = head;
 		ListNode next = head.next;
 		while(next != null) {
-			if(cur.val == next.val) {
+			if(cur.value == next.value) {
 				next = next.next;
 				cur.next = next;
 			}

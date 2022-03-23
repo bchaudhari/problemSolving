@@ -24,7 +24,7 @@ Explanation: You are given the third node with value 1, the linked list should b
  */
 public class DeleteLinkNodeWithoutHeadAccess {
 	public void deleteNode(ListNode node) {
-		node.val = node.next.val;
+		node.value = node.next.value;
 		node.next = node.next.next;
 	}
 

@@ -1,23 +1,23 @@
 package com.bk.utils;
 
 public class ListNode {
-	public int val;
+	public int value;
 	public ListNode next;
 	public ListNode() {}
 	public ListNode(int val) 
 	{
-		this.val = val; 
+		this.value = val; 
 	}
 	public ListNode(int val, ListNode next) 
 	{
-		this.val = val;
+		this.value = val;
 		this.next = next; 
 	}
 
 	public static void printLinkedList(ListNode node) {
 		System.out.print("\n");
 		while(node != null) {
-			System.out.print(node.val + " ");
+			System.out.print(node.value + " ");
 			node = node.next;
 		}
 	}
