@@ -1,6 +1,6 @@
 package educative.twoPointers;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * Given an array of unsorted numbers and a target number, find a triplet 
@@ -23,37 +23,29 @@ import java.util.*;
  */
 public class TripletSumCloseToTarget {
 
-	public static int searchTriplet(int[] a, int target){
-		if(a == null || a.length <= 3) {
-			throw new IllegalArgumentException();
-		}
+	public static int searchTriplet(int[] nums, int target){
+		Arrays.sort(nums);
+		int diff = Integer.MAX_VALUE;
 		
-		Arrays.sort(a);
-		int smallestDifference = Integer.MAX_VALUE;
-		
-		for(int i = 0; i < a.length-2; i++) {
+		for(int i = 0; i < nums.length && diff != 0; i++) {
 			int left = i + 1;
-			int right = a.length - 1;
+			int right = nums.length - 1;
 			while(left < right) {
-				int currentDiff = target - a[i] - a[left] - a[right];
-				if(currentDiff == 0) {
-					return target;
-				}
-				if(Math.abs(currentDiff) < Math.abs(smallestDifference) ||
-						(Math.abs(currentDiff) == Math.abs(smallestDifference) &&
-						currentDiff > smallestDifference)) {
-					smallestDifference = currentDiff;
+				int sum =  nums[i] + nums[left] + nums[right];
+				
+				if(Math.abs(target - sum) < Math.abs(diff)) {
+					diff = target - sum;
 				}
 				
-				if(currentDiff > 0) {
+				if(sum < target) {
 					left++;
 				}
-				else if(currentDiff < 0) {
+				else{
 					right--;
 				}	
 			}
 		}
-		return target - smallestDifference;
+		return target - diff;
 	}
 
 	public static void main(String[] args) {
