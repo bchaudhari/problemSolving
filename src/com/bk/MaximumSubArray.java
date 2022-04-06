@@ -1,5 +1,7 @@
 package com.bk;
 
+import com.bk.utils.Printer;
+
 /***
  * 
 https://leetcode.com/problems/maximum-subarray/
@@ -17,76 +19,44 @@ If you have figured out the O(n) solution, try coding another solution using the
  *
  */
 public class MaximumSubArray {
-//	public int maxSubArray(int[] nums) {
-//		int maxSum = 0;
-//		int sum = 0;
-//
-//		int n = nums.length;
-//		int subArraySize = (int)Math.sqrt(n);
-//		
-//		int start = 0;
-//		int end = subArraySize;
-//		int count = 0;
-//		boolean firstSub = true;
-//		for(int i = 0; i < n; i++) {
-//			count++;
-//			sum = sum + nums[i];
-//			if(count % subArraySize == 0 || count == n) {
-//				if(firstSub || sum > maxSum) {
-//					maxSum = sum;
-//					end = i;
-//					start = i - subArraySize + 1;
-//					firstSub = false;
-//				}
-//				
-//				sum = 0;
-//			}
-//		}
-//
-//		sum = maxSum;
-//
-//		// Increase left boundary of subArray till sum keeps increasing
-//		while(start > 0 && sum >= maxSum) {
-//			start = start - 1;
-//			sum = sum + nums[start];
-//			if(sum < maxSum) {
-//				start = start +1;
-//			} else {
-//				maxSum = sum;
-//			}
-//		}
-//
-//		sum = maxSum;
-//
-//		// Increase right boundary of subArray till sum keeps increasing
-//		while(end < n-1 && sum >= maxSum) {
-//			end = end + 1;
-//			sum = sum + nums[end];
-//			if(sum < maxSum) {
-//				end = end - 1;
-//			} else {
-//				maxSum = sum;
-//			}
-//		}
-//		return maxSum;
-//	}
-	public int maxSubArray1(int[] nums) {
+	public int maxSubArray(int[] nums) {
         
         int maxSum=nums[0];
         int currentSum=maxSum;
-        
+         
         for(int i=1; i<nums.length; i++){
-            currentSum=Math.max(nums[i]+currentSum, nums[i]);
-            maxSum=Math.max(currentSum, maxSum);
+        	currentSum=Math.max(nums[i]+currentSum, nums[i]);
+             maxSum=Math.max(currentSum, maxSum);
+            
         }
         return maxSum;
     }
+	
+	// If you need to return indexes that makes maximum sum sub array
+	public int[] maxSubArrayIndexes(int[] nums) {
+        
+        int maxSum=nums[0];
+        int currentSum=maxSum;
+        int[] indexes = new int[2];
+        
+        for(int i=1; i<nums.length; i++){
+        	if(nums[i] > (currentSum + nums[i]))
+                indexes[0] = i;
+            currentSum=Math.max(nums[i]+currentSum, nums[i]);
+            if(currentSum > maxSum)
+                indexes[1] = i;
+            maxSum=Math.max(currentSum, maxSum);
+            
+        }
+        return indexes;
+    }
 	public static void main(String[] args) {
-//		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
-		int[] nums = {31,-41,59,26,-53,58,97,-93,-23,84};
+		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+		//int[] nums = {31,-41,59,26,-53,58,97,-93,-23,84};
 		
 		MaximumSubArray msa = new MaximumSubArray();
-		System.out.println(msa.maxSubArray1(nums));
+		System.out.println(msa.maxSubArray(nums));
+		Printer.printArray(msa.maxSubArrayIndexes(nums));
 	}
 
 }
