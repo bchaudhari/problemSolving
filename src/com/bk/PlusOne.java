@@ -49,42 +49,6 @@ public class PlusOne {
 	    return newNumber;
 	}
 	
-	// Runtime 0 ms on leetcode
-	// faster than 
-	public int[] plusOne1(int[] digits) {
-		boolean cf = false;
-		int lastDigit = digits[digits.length - 1];
-		if(lastDigit == 9) {
-			digits[digits.length - 1] = 0;
-			cf = true;
-			for(int i = digits.length - 2; i >= 0; i--) {
-				int currDigit = digits[i];
-				if(cf) {
-					int plsOne = currDigit  + 1;
-					if(plsOne <= 9) {
-						cf = false;
-						digits[i] = plsOne;
-					} else {
-						digits[i] = 0;
-						cf = true;
-					}
-				}
-			}
-			if(cf || digits[0] == 10) {
-				int[] result = new int[digits.length + 1];
-				result[0] = 1;
-				for(int i = 0; i < digits.length -1; i++) {
-					result[i+1] = digits[i];
-				}
-				return result;
-			}
-			return digits;
-		} else {
-			digits[digits.length - 1] = lastDigit + 1;
-			return digits;
-		}
-		
-	}
 	public static void main(String[] args) {
 		PlusOne plus1 = new PlusOne();
 		Printer.printArray(plus1.plusOne(new int[] {1,2,3}));
