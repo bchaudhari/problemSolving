@@ -1,6 +1,8 @@
 package educative.slidingWindow;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -31,8 +33,9 @@ import java.util.Set;
  *
  */
 public class NoRepeatSubstring {
-	
-	public static int longestNonRepeatingSubstring(String s) {
+
+	// Using HashSet
+	public static int longestNonRepeatingSubstring2(String s) {
 		int longest = 0;
 		int start = 0;
 		Set<Character> uniqueChars = new HashSet<Character> ();
@@ -52,20 +55,38 @@ public class NoRepeatSubstring {
 		}
 		return longest;
 	}
-	
+
+	// Using HashMap
+	public static int longestNonRepeatingSubstring(String str) {
+		int start = 0;
+		int maxLen = 0;
+		Map<Character, Integer> charIndex = new HashMap<>();
+		for(int end = 0; end < str.length(); end++){
+			char c = str.charAt(end);
+			if(!charIndex.containsKey(c)){
+				charIndex.put(c, end);
+			} else {
+				start = charIndex.get(c) + 1;
+				charIndex.put(c, end);
+			}
+			maxLen = Math.max(maxLen, end - start + 1);
+		}
+		return maxLen;
+	}
+
 	public static void main(String[] args) {
 		String s1 = "aabccbb";
 		int out1 = longestNonRepeatingSubstring(s1);
 		System.out.println(out1);
-		
+
 		String s2 = "abbbb";
 		int out2 = longestNonRepeatingSubstring(s2);
 		System.out.println(out2);
-		
+
 		String s3 = "abccde";
 		int out3 = longestNonRepeatingSubstring(s3);
 		System.out.println(out3);
-		
+
 		String s4 = "cabcde";
 		int out4 = longestNonRepeatingSubstring(s4);
 		System.out.println(out4);
